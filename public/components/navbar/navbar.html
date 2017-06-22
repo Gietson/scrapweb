@@ -1,0 +1,90 @@
+<div ng-controller="NavbarCtrl">
+    <!-- *** TOPBAR ***
+    _________________________________________________________ -->
+    <div id="top">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="col-md-5 visible-lg" data-animate="fadeInDown">
+                        <div class="offer">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <a href="/">Wyszukuj najlepsze oferty mieszkań w całym kraju!</a>
+                        </div>
+                    </div>
+                    <div class="col-md-7" data-animate="fadeInDown">
+                        <ul class="menu">
+                            <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup">Rejestracja</a></li>
+                            <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">Zaloguj</a></li>
+                            <!--<li ng-show="isLoggedIn()"><a href="/settings">Witaj, {{ getCurrentUser().name }} </a></li>-->
+                            <li ng-show="isLoggedIn()">Witaj, {{ getCurrentUser().name }}</li>
+                            <li class="dropdown" ng-show="isLoggedIn()" dropdown="">
+                                <a href="#" dropdown-toggle="" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-dashboard">&nbsp;</i>Panel sterowania<b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li ng-show="isLoggedIn()" ng-class="{active: isActive('/notification')}">
+                                        <a href="/notification"><i class="fa fa-truck">&nbsp;</i>Powiadomienia</a>
+                                    </li>
+                                    <!--<li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}">
+                                        <a href="/settings"><i class="fa fa-user">&nbsp;</i>Zmiana hasła</a>
+                                    </li>-->
+                                    <li ng-show="isLoggedIn()" ng-class="{active: isActive('/blocked')}">
+                                        <a href="/blocked"><i class="fa fa-times">&nbsp;</i>Blokuj ogłoszenia</a>
+                                    </li>
+                                    <li ng-show="isLoggedIn()" ng-class="{active: isActive('/status')}">
+                                        <a href="/status"><i class="fa fa-area-chart">&nbsp;</i>Zablokowane/wysłane</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li ng-show="isAdmin()" ng-class="{active: isActive('/scanpage')}">
+                                        <a href="/scanpage"><i class="fa fa-ticket">&nbsp;</i>Skanowane strony</a>
+                                    </li>
+                                    <li ng-show="isAdmin()" ng-class="{active: isActive('/log')}">
+                                        <a href="/log"><i class="fa fa-road">&nbsp;</i>Logs</a>
+                                    </li>
+                                    <li ng-show="isAdmin()" ng-class="{active: isActive('/setting')}">
+                                        <a href="/setting"><i class="fa fa-cogs">&nbsp;</i>Ustawienia</a>
+                                    </li>
+                                    <li ng-show="isAdmin()" ng-class="{active: isActive('/customer')}">
+                                        <a href="/customer"><i class="fa fa-user">&nbsp;</i>Użytkownicy</a>
+                                    </li>
+                                    <!-- <li class="divider"></li>
+                                      <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}">
+                                       <a href="/admin"><i class="fa fa-user">&nbsp;</i>Shop Settings</a>
+                                     </li>
+
+                                     <li ng-show="isLoggedIn()" ng-class="{active: isActive('/paymentMethod')}">
+                                         <a href="/paymentMethod"><i class="fa fa-wrench">&nbsp;</i>Payment Method</a>
+                                     </li>
+                                     <li ng-show="isLoggedIn()" ng-class="{active: isActive('/shipping')}">
+                                         <a href="/shipping"><i class="fa fa-wrench">&nbsp;</i>Shipping Settings</a>
+                                     </li>-->
+                                    <li ng-show="isAdmin()" class="divider"></li>
+                                    <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}">
+                                        <a href="" ng-click="logout()"><i class="fa fa-sign-out">&nbsp;</i>Wyloguj</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- *** TOP BAR END *** -->
+
+    <!-- *** NAVBAR ***
+    _________________________________________________________ -->
+
+
+    <!-- *** NAVBAR END *** -->
+</div>

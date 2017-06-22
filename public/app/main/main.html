@@ -1,0 +1,203 @@
+<div>
+    <!--MOBILE FILTRE STYLE-->
+    <div class="navbar navbar-default yamm hidden-lg" role="navigation" id="navbar">
+        <div class="container">
+            <div class="col-md-12">
+                <div>
+                    <button type="button" class="btn btn-primary btn-search" data-toggle="collapse"
+                            data-target="#search">
+                        <i class="fa fa-search"> Wyszukaj ogłoszenia </i><span
+                            class="glyphicon glyphicon-menu-down"></span>
+                    </button>
+                </div>
+
+                <div class="collapse" id="search">
+                    <form class="form-group" ng-submit="goFilter()">
+                        <div class="input-group">
+                            <input type="text" class="number_min" pattern="[0-9]*" min="0" placeholder="Cena"
+                                   ng-model="priceFrom">
+                            <span class="devideLine">-</span>
+                            <input type="text" class="number_max" pattern="[0-9]*" min="0" placeholder="Cena"
+                                   ng-model="priceTo">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="number_min" pattern="[0-9]*" min="0" placeholder="Cena/m2"
+                                   ng-model="priceM2From">
+                            <span class="devideLine">-</span>
+                            <input type="text" class="number_max" pattern="[0-9]*" min="0" placeholder="Cena/m2"
+                                   ng-model="priceM2To">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"> <span class="glyphicon glyphicon-tent"></span></span>
+                            <input type="text" class="form-control" placeholder="Dzielnica" ng-model="district">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"> <span class="glyphicon glyphicon-home"></span></span>
+                            <input type="text" class="form-control" placeholder="Miasto" ng-model="city">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Agencja:</label>
+                            <label class="checkbox-inline"><input type="checkbox" name="agency" value="true"
+                                                                  ng-model="agency">Tak</label>
+                            <label class="checkbox-inline"><input type="checkbox" name="agency" value="false"
+                                                                  ng-model="agency">Nie</label>
+                        </div>
+                        <div class="input-group pull-right">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Filtruj
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <!--/.nav-collapse -->
+
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#navbar -->
+    </div>
+
+
+    <div class="filterView visible-lg">
+        <h4> Filtrowanie</h4>
+
+        <form class="form-group" ng-submit="goFilter()">
+            <div class="input-group">
+                <span class="titleFiltr">cena (zł)</span>
+                <input type="text" class="number_min" pattern="[0-9]*" min="0" placeholder="od"
+                       ng-model="form.priceFrom">
+                <span class="devideLine">-</span>
+                <input type="text" class="number_max" pattern="[0-9]*" min="0" placeholder="do"
+                       ng-model="form.priceTo">
+            </div>
+            <div class="input-group">
+                <span class="titleFiltr">cena/m2 (zł)</span>
+                <input type="text" class="number_min" pattern="[0-9]*" min="0" placeholder="od"
+                       ng-model="form.priceM2From">
+                <span class="devideLine">-</span>
+                <input type="text" class="number_max" pattern="[0-9]*" min="0" placeholder="do"
+                       ng-model="form.priceM2To">
+            </div>
+            <div>
+                <span class="titleFiltr">lokalizacja</span>
+
+                <div unique-drop-down value="district" ng-model="form.district" ng-class="location"></div>
+                <div unique-drop-down value="city" ng-model="form.city" ng-class="location"></div>
+            </div>
+
+            <div class="input-group">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="agency" ng-model="form.agency">agencja
+                </label>
+            </div>
+            <div class="input-group pull-right">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Filtruj</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="sortView">
+        <div class="view_as" ng-init="viewClass = 'list'">
+            <a href="#" class="list" ng-click="viewClass = 'list'"><i class="fa fa-th-list" aria-hidden="true"></i></a>
+            <a href="#" class="gallery" ng-click="viewClass = 'gallery'"> <i class="fa fa-th"
+                                                                             aria-hidden="true"></i></a>
+        </div>
+        <div class="sort">
+            <span>Sortuj według:</span>
+
+
+            <div class="btn-group" uib-dropdown dropdown-append-to-body>
+                <button id="single-button" type="button" class="btn btn-sm btn-primary" uib-dropdown-toggle>
+                    <i class="fa fa-calendar" aria-hidden="true"></i> {{sortSelectedItem.text}} <span
+                        class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
+                    <li role="menuitem">
+                        <a href="#" ng-click="sortChange(list)" ng-repeat="list in sortList">
+                            <i class="fa fa-calendar" aria-hidden="true"></i> {{list.text}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="view" dw-loading="filter" dw-loading-options="{text: ''}">
+        <ul ng-repeat="a in ads" class="{{viewClass}}">
+            <li>
+                <div class="result-img">
+                    <a href="{{a.url}}" target="_blank">
+                        <!--jest obrazek-->
+                        <div ng-if="a.photos.length > 0">
+                            <img class=".img-responsive" height="100" width="150"
+                                 ng-src="http://img.classistatic.com/crop/75x50/i.ebayimg.com/00/s/NjQwWDQ4MA==/z/{{a.photos[0]}}/$_19.JPG?set_id=8800005007"/>
+                                    <span class="icn-camera">{{a.photos.length}}
+                                        <img ng-src="../assets/img/ico_camera.png">
+                                    </span>
+                        </div>
+                        <!--nie ma obrazka-->
+                        <div ng-if="a.photos.length == 0">
+                            <img class=".img-responsive" ng-src="../assets/img/no_photo.png">
+                        </div>
+                    </a>
+
+                </div>
+                <div class="result-info">
+                    <div class="info">
+                        <div class="price">
+                            {{(a.price | number:0) + " zł"}}
+                        </div>
+                        <div class="priceM2">
+                            {{(a.priceM2 | number:0) + " zł/m2"}}
+                        </div>
+                        <div class="creation-date">
+                            {{a.dateScan | date:"hh:mm dd/MM/yy"}}
+                        </div>
+                        <div class="scrap-page">
+                            <img ng-src="../assets/img/ico_{{a.page | lowercase}}.png">
+                        </div>
+                    </div>
+                    <div class="details">
+                        <div class="title">
+                            <a href="{{a.url}}" target="_blank">{{a.title}}</a>
+                        </div>
+                        <span>Rozmiar: {{a.size}}m2</span>
+                        <span><p ng-if="a.agency">Agencja</p><p ng-if="!a.agency">Właściciel</p></span>
+                        <span>Rodzaj zabudowy: {{a.propertyType}}</span>
+                        <span>Liczba pokoi: {{a.numberOfRooms}}</span>
+
+                        <div class="location">
+                            <span ng-if="a.district && a.district != 'none'">{{a.district}},</span>
+                            <span> {{a.city}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <div class="btn-group" ng-hide="!isLoggedIn()">
+                        <a class="btn btn-default btn-sm btn-info" ng-hide="!isAdmin()" title="Edytuj ogłoszenie"
+                           ng-click="edit(a);"><i
+                                class="fa fa-edit"></i></a>
+                        <a class="btn btn-default btn-sm btn-warning" title="Blokuje podobne ogłoszenia"
+                           ng-click="block(a);"><i
+                                class="fa fa-lock"></i></a>
+                        <a class="btn btn-default btn-sm btn-danger" ng-hide="!isAdmin()" title="Usuń ogłoszenie"
+                           ng-confirm-message="Czy napewno usunąć?"
+                           ng-confirm-click="delete(p)" item="a"><i class="fa fa-trash-o"></i></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<uib-pagination ng-if="totalItems > limitOnPage"
+                class="pagination-md pull-right"
+                total-items="totalItems"
+                items-per-page="limitOnPage"
+                ng-model="currentPage"
+                max-size="5"
+                boundary-link-numbers="true"
+                ng-change="goFilter()">
+</uib-pagination>

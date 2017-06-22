@@ -1,0 +1,348 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    
+    padding-top: 70px;
+}
+
+.content {
+    padding: 1% 6% 6% 6%;
+}
+
+.menu li {
+    float: left;
+    list-style: none;
+    text-align: center;
+    width: 200px;
+    line-height: 60px;
+    border-left: 1px solid #ebebeb;
+    font-size: 14px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #777777;
+    display: block;
+
+}
+
+.menu li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: #8fc238;
+    transition: .2s color;
+}
+
+.dropdown-menu li {
+    text-align: left;
+
+}
+
+.offer {
+    float: left;
+    list-style: none;
+    text-align: center;
+
+    color: #777777;
+    display: block;
+
+    line-height: 60px;
+    text-decoration: none;
+}
+
+.offer .fa-search {
+    color: #8fc238;
+}
+
+.offer a {
+    text-decoration: none;
+    color: #777777;
+    font-style: italic;
+}
+
+.offer a:hover {
+    text-decoration: none;
+    color: #8fc238;
+    transition: .5s color;
+}
+
+.btn-search {
+    margin-top: 7px;
+}
+
+/*
+=================================
+                ADS
+================================= */
+@media screen and (max-width: 1200px) {
+    .view {
+        width: 100%;
+
+    }
+
+    .sortView {
+        float: left;
+        overflow: auto;
+        width: 100%;
+    }
+
+    .content {
+        padding: 1% 1% 1% 1%;
+    }
+
+}
+
+.view {
+    width: 84%;
+    float: right;
+}
+
+/*
+=================================
+                LIST
+================================= */
+.view .list {
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+    list-style-type: none;
+    padding: 5px 5px 5px 5px;
+    overflow: auto;
+}
+
+
+.list .result-info .details .title a {
+    text-decoration: none;
+    color: #777777;
+    font-weight: bold;
+}
+
+.list .result-info .details .title a:hover {
+    text-decoration: none;
+    color: #8fc238;
+    transition: .5s color;
+}
+
+.list .result-img {
+    float: left;
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    margin-right: 3%;
+}
+
+.list .result-img .icn-camera {
+    margin-top: 3px;
+    display: block;
+    text-decoration: none;
+    color: #777777;
+}
+
+.list .result-img .icn-camera:hover {
+    text-decoration: none;
+    color: #8fc238;
+    transition: .5s color;
+}
+
+.list .result-info {
+    float: left;
+    width: 70%;
+}
+
+.list .img-responsive img {
+    max-width: 150px;
+    max-height: 100px;
+}
+
+.list .result-info .info a {
+    font-weight: bold;
+}
+
+.list .result-info .info {
+    float: right;
+    width: 20%;
+    text-align: center;
+
+}
+
+.list .result-info .details {
+    width: auto;
+}
+
+.list .result-info .details span {
+    display: block;
+}
+
+.list .result-info .details span p {
+    display: inline;
+}
+
+.list .result-info .details .location span {
+    display: inline;
+    font-weight: bold;
+    vertical-align: bottom;
+}
+
+.list .result-info .info .price {
+    font-weight: bold;
+}
+
+/*
+=================================
+                GALLERY
+================================= */
+.view .gallery {
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+    list-style-type: none;
+    padding: 5px 5px 5px 5px;
+    overflow: auto;
+	width: 220px;
+	height: auto;
+	float:left;
+	
+	margin: 5px 5px;
+}
+.gallery .result-img {
+    float: left;
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    margin-right: 3%;
+	width: 100%;
+}
+
+.gallery .result-img .icn-camera {
+    display: none;
+}
+
+.gallery .result-info {
+
+
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.gallery .result-info .details {
+    order: 1;
+    width: 100%;
+}
+
+.gallery .result-info .details .title{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.gallery .result-info .details .title a {
+    text-decoration: none;
+    color: #777777;
+    font-weight: bold;
+}
+
+.gallery .result-info .details .title a:hover {
+    text-decoration: none;
+    color: #8fc238;
+    transition: .5s color;
+}
+
+.gallery .result-info .details span {
+    display: inline;
+    vertical-align: bottom;
+}
+
+.gallery .img-responsive img {
+    max-width: 150px;
+    max-height: 100px;
+}
+
+.gallery .result-info .info {
+    width: 100%;
+    order: 2;
+}
+
+.gallery .result-info .info .price {
+    font-weight: bold;
+}
+
+
+/*
+=================================
+                SORT
+================================= */
+.sortView {
+    background-color: #f8f8f8;
+    /*border-color: ;*/
+    border: 1px solid #e7e7e7;
+
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+    padding: 5px 5px 5px 5px;
+
+    overflow: auto;
+    width: 84%;
+    margin-bottom: 1%;
+}
+
+.sortView .sort {
+    float: right;
+}
+
+.sortView .view_as {
+    /*padding-top: 5px;*/
+    float: left;
+    font-size:24px;
+}
+
+/*
+=================================
+                FILTER
+================================= */
+.filterView {
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+    padding: 5px 5px 5px 5px;
+
+    width: 15%;
+    float: left;
+    margin-right: 1%;
+}
+
+.number_min, .number_max {
+    margin-bottom: 3px;
+    display: inline-block;
+    width: 47%;
+    float: left;
+}
+
+.devideLine {
+    display: inline-block;
+    width: 3%;
+    float: left;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.ads-footer {
+    float: right;
+    vertical-align: bottom;
+}
+.titleFiltr{
+    float:left;
+    width: 100%;
+}
+.location{
+    margin: 1% 1%;
+    width: 100%;
+}

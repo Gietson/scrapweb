@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="box">
+            <h1>Nowy użytkownik</h1>
+
+            <p class="lead">Nie jesteś jeszcze naszym klientem?</p>
+            <p>Jako zarejestrowany użytkownik będziesz miał dostęp do konfiguracji powiadomień oraz do wielu innych rzeczy. Cały proces rejestracji nie potrwa więcej niż minutę!</p>
+            <p class="text-muted">Jeśli masz jakieś pytanie <a href="/contact">skontaktuj się</a> z naszym serwisem, pracuje dla Ciebie 24/7.</p>
+
+            <hr>
+
+            <form ng-submit="register(form)" novalidate name="form">
+              <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                                  'has-error': form.name.$invalid && submitted }">
+                <label>Twoje imię:</label>
+
+                <input type="text" name="name" class="form-control" ng-model="user.name"
+                       ng-minlength="4" required placeholder="Imię"/>
+                <p class="help-block" ng-show="form.name.$error.required && submitted">
+                  Pole imię jest wymagane
+                </p>
+                  <p class="help-block"
+                     ng-show="form.name.$error.minlength && submitted">
+                      Imię musi składać się z co najmniej 4 znaków.
+                  </p>
+              </div>
+
+              <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
+                                                  'has-error': form.email.$invalid && submitted }">
+                <label>Adres e-mail:</label>
+
+                <input type="email" name="email" class="form-control" ng-model="user.email"
+                       required
+                       mongoose-error placeholder="e-mail"/>
+                <p class="help-block" ng-show="form.email.$error.email && submitted">
+                  Wygląda, że podałeś nieprawidłowy e-mail
+                </p>
+                <p class="help-block" ng-show="form.email.$error.required && submitted">
+                  Jaki jest Twój adres e-mail?
+                </p>
+                <p class="help-block" ng-show="form.email.$error.mongoose">
+                  {{ errors.email }}
+                </p>
+                  {{form.email}}
+              </div>
+
+              <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
+                                                  'has-error': form.password.$invalid && submitted }">
+                <label>Hasło:</label>
+
+                <input type="password" name="password" class="form-control" ng-model="user.password"
+                       ng-minlength="3"
+                       required
+                       mongoose-error placeholder="Hasło"/>
+                <p class="help-block"
+                   ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
+                    Hasło musi składać się z co najmniej 3 znaków.
+                </p>
+                <p class="help-block" ng-show="form.password.$error.mongoose">
+                  {{ errors.password }}
+                </p>
+              </div>
+              <div class="form-group" ng-class="{ 'has-success': form.password2.$valid && submitted,
+                                                  'has-error': form.password2.$invalid && submitted }">
+                  <label>Potwierdź hasło:</label>
+
+                  <input type="password" name="password2" class="form-control" ng-model="user.password2"
+                         ng-minlength="3"
+                         required
+                         mongoose-error placeholder="Hasło"
+                         password-match="user.password"/>
+                  <p class="help-block"
+                     ng-show="(form.password2.$error.minlength || form.password2.$error.required) && submitted">
+                      Hasło musi składać się z co najmniej 3 znaków.
+                  </p>
+                  <p class="help-block"
+                     ng-show="form.password2.$error.passwordNoMatch && submitted">
+                      Hasła nie są takie same.
+                  </p>
+              </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Zarejestruj</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="" href="/login">Zaloguj się</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+
+  </div>
+  <hr>
+</div>

@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="box">
+            <h1>Logowanie</h1>
+
+            <p class="lead">Jesteś naszym klientem? Zaloguj się</p>
+            <!--<a href="/auth/facebook"  target="_self" class="btn btn-block btn-social btn-facebook">
+                <span class="fa fa-facebook"></span> Zaloguj się przez Facebook
+            </a>-->
+
+
+            <a ng-click="loginOauth('facebook')" class="btn btn-block btn-social btn-facebook">
+                <span class="fa fa-facebook"></span> Zaloguj się przez Facebook
+            </a>
+            <a ng-click="loginOauth('google')" class="btn btn-block btn-social btn-google">
+                <span class="fa fa-google"></span> Zaloguj się przez Google
+            </a>
+
+            <p class="text-muted">
+              Default account is <code>test@test.com</code> / <code>test</code><br/>Admin account is <code>admin@admin.com</code> / <code>admin</code></p>
+            </p>
+
+            <hr>
+
+            <form ng-submit="login(form)" name="form" novalidate>
+                <div class="form-group">
+                    <label for="email"> Adres e-mail: </label>
+                    <input type="email" name="email" class="form-control" ng-model="user.email" required placeholder="Twój adres e-mail">
+                    <p class="help-block" ng-show="form.email.$dirty && form.email.$error.required">
+                       Wpisz swój adres e-mail.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label for="password">Hasło: </label>
+                    <input type="password" name="password" class="form-control" ng-model="user.password" required placeholder="Twoje hasło">
+                    <p class="help-block" ng-show="form.password.$dirty && form.password.$error.required">
+                       Wpisz swoje hasło.
+                    </p>
+                </div>
+                <div class="form-group has-error">
+                  <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && submitted">
+                      Wpisz swój adres e-mail oraz hasło.
+                  </p>
+                  <p class="help-block" ng-show="form.email.$error.email && submitted">
+                     Podaj prawidłowy adres e-mail.
+                  </p>
+
+                  <p class="help-block">{{ errors.other }}</p>
+                </div>
+                <div class="text-center">
+                  <button class="btn btn-inverse btn-lg btn-login btn-primary" type="submit" ng-disabled="form.$dirty && form.$invalid">
+                    Zaloguj się
+                  </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a class="" href="/signup">
+                    Utwórz konto
+                  </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <hr>
+</div>

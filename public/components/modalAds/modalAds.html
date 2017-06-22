@@ -1,0 +1,44 @@
+<div class="modal-header">
+    <button type="button" ng-click="$dismiss()" class="close">&times;</button>
+    <h4 ng-if="options.title" ng-bind="options.title" class="modal-title"></h4>
+</div>
+
+<form name="modal-form" class="form-horizontal" role="form" novalidate>
+    <div class="modal-body">
+        <div ng-if="options.action=='block'" class="form-group col-md-12 text-center">
+            <span>Zostaw tylko uzupełnione pola po których ma blokować podobne ogłoszenia</span>
+        </div>
+
+        <p ng-if="options.body" ng-bind="options.body"></p>
+
+        <div class="form-group" ng-repeat="i in options.columns" ng-if="options.columns">
+            <label class="col-sm-3 control-label no-padding-right" ng-if="i.show">{{i.title}}</label>
+
+            <div class="col-sm-8">
+              <span class="block input-icon input-icon-right">
+                <input type="text" class="form-control" name="name" ng-model="data[i.field]"
+                       ng-if="i.show && i.dataType!=='boolean'" autofocus="i.field=='name'" placeholder="{{i.title}}">
+                <input type="checkbox" ng-model="data[i.field]" ng-if="i.dataType==='boolean'" class="form-control">
+              </span>
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-link" ng-click="data[i.field] = null" ng-if="i.show"
+                        ng-disabled="data[i.field] == null">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <!--<button ng-repeat="button in options.buttons" ng-class="button.classes" ng-click="button.click($event)" ng-bind="button.text" class="btn"></button>-->
+
+        <button type="button" class="btn btn-danger" ng-click="data = '';"
+                title="Usuwa wszystkie wpisane wartości w polach">
+            <i class="fa fa-trash-o" aria-hidden="true"></i> Usuń parametry
+        </button>
+
+        <button type="button" class="btn btn-default" ng-click="cancel();">Anuluj</button>
+        <button class="btn btn-primary" ng-click="saveItem(data);" type="submit">Zapisz</button>
+    </div>
+</form>
